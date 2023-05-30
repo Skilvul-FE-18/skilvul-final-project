@@ -1,3 +1,6 @@
+import FooterAtas from "./components/FooterAtas"
+import FooterBawah from "./components/FooterBawah"
+import Navbar from "./components/Navbar"
 
 
 function App() {
@@ -5,7 +8,9 @@ function App() {
 
   return (
     <>
-      <h1>Hello World</h1>
+    <Navbar />
+      <FooterAtas />
+      <FooterBawah />
     </>
   )
 }
