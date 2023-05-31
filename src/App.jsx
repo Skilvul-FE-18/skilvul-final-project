@@ -1,6 +1,5 @@
-import FooterAtas from "./components/FooterAtas"
-import FooterBawah from "./components/FooterBawah"
-import Navbar from "./components/Navbar"
+import TentangKami from "./pages/TentangKami"
+
 
 
 function App() {
@@ -8,9 +7,7 @@ function App() {
 
   return (
     <>
-    <Navbar />
-      <FooterAtas />
-      <FooterBawah />
+   <TentangKami />
     </>
   )
 }

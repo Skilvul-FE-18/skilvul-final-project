@@ -3,7 +3,7 @@ import logo from '../assets/img/logo.png'
 function Navbar() {
   return (
    <>
-    <nav className="navbar navbar-expand-md sticky-top">
+    <nav className="navbar navbar-expand-md sticky-top" style={{background:'#FFFFFF'}}>
         <div className="container">
             <a className="navbar-brand" href="#">
                 <img src={logo} alt="Logo" width="40" height="40" className="d-inline-block align-text-center" />
