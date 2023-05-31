@@ -74,7 +74,7 @@ function TentangKamiComponent() {
                               </div>
                           </div>
                     </div>
-            </div>Name
+            </div>
     </section>
     </div>
    
