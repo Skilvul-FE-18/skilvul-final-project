@@ -1,16 +1,16 @@
-
-import Navbar from '../components/Navbar'
-import FooterAtas from '../components/FooterAtas'
-import FooterBawah from '../components/FooterBawah'
 import TentangKamiComponent from '../components/TentangKami'
+import MainLayout from '../layout/MainLayout'
 
 function TentangKami() {
   return (
     <>
-    <Navbar />
+    {/* <Navbar />
   <TentangKamiComponent />
     <FooterAtas />
-    <FooterBawah />
+    <FooterBawah /> */}
+    <MainLayout>
+      <TentangKamiComponent />
+    </MainLayout>
     </>
   )
 }
