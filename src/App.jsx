@@ -7,7 +7,9 @@ function App() {
 
   return (
     <>
-   <TentangKami />
+    <div style={{ fontFamily: "Poppins, sans-serif" }}>
+      <TentangKami/>
+    </div>
     </>
   )
 }
