@@ -1,4 +1,6 @@
-import TentangKami from "./pages/TentangKami"
+
+import Login from "./pages/Login"
+
 
 
 
@@ -7,7 +9,7 @@ function App() {
 
   return (
     <>
-   <TentangKami />
+  <Login/>
     </>
   )
 }

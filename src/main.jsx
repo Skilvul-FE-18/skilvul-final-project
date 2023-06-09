@@ -5,6 +5,7 @@ import App from './App.jsx'
 import './assets/bootstrap/css/bootstrap.min.css'
 import './assets/bootstrap/js/bootstrap.bundle.js'
 import './index.css'
+import '@fortawesome/fontawesome-free/css/all.min.css'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
