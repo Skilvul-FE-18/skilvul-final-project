@@ -1,17 +1,19 @@
-import TentangKami from "./pages/TentangKami"
-
-
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Registrasi from "./pages/Registrasi";
+export const apiEndPoint = "https://647c25b9c0bae2880ad06ad3.mockapi.io/";
 
 function App() {
- 
-
-  return (
-    <>
-    <div style={{ fontFamily: "Poppins, sans-serif" }}>
-      <TentangKami/>
-    </div>
-    </>
-  )
+	return (
+		<div style={{ fontFamily: "Poppins, sans-serif" }}>
+			<BrowserRouter>
+				<Routes>
+					<Route path="/" element={<Login />} />
+					<Route path="/registrasi" element={<Registrasi />} />
+				</Routes>
+			</BrowserRouter>
+		</div>
+	);
 }
 
-export default App
+export default App;
