@@ -16,3 +16,12 @@
     display: flex;
     justify-content: end;
 }
+
+.boxLogin{
+    height: 100%;
+    align-items: center;
+}
+
+.judul {
+    padding: 50px 0;
+}

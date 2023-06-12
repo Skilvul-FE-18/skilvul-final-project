@@ -1,17 +1,40 @@
 
-import Login from "./pages/Login"
-
-
+import { useSelector } from "react-redux";
+import LandingPage from "./pages/LandingPage";
+import Login from "./pages/Login";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Register from "./pages/Register";
+import TentangKami from './pages/TentangKami';
+import Artikel from './pages/Artikel';
 
 
 function App() {
- 
-
+  const store = useSelector((state) => state.users);
+  console.log(store)
   return (
     <>
-  <Login/>
+      <BrowserRouter>
+      {
+        store.authStatus ? 
+        <Routes>
+          <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/tentangKami" element={<TentangKami />}  />
+          <Route exact path="/artikel" element={<Artikel />}  />
+        </Routes>
+        : 
+        <Routes>
+          <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/tentangKami" element={<TentangKami />}  />
+          <Route exact path="/artikel" element={<Artikel />}  />
+        </Routes>
+      }
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
