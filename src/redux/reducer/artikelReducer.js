@@ -26,6 +26,7 @@ export const getArtikel = () => async (dispatch) => {
 
 const initialState = {
   artikel: [],
+  filterCategory: 'all',
   isLoading: false,
 };
 
@@ -40,12 +41,19 @@ export const artikelSlice = createSlice({
       state.artikel = action.payload;
       state.isLoading = false;
     },
+    setArtikel: (state, action) => {
+      state.artikel = action.payload;
+    },
+    filterCategory: (state, action) => {
+      state.filterCategory = action.payload;
+    },
   },
 });
 
 
 
 
-export const { startFetching,successGetArtikel } = artikelSlice.actions;
+
+export const { startFetching,successGetArtikel,filterCategory,setArtikel } = artikelSlice.actions;
 
 export default artikelSlice.reducer;

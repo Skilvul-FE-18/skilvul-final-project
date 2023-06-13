@@ -14,7 +14,7 @@ function Artikel() {
 
     <MainLayout>
        <JumbotronArtikel/>
-       <FilterArtikel   />
+       {/* <FilterArtikel   /> */}
        {/* <HighlightArtikel/> */}
        <ListArtikel/>
        <DisclaimerArtikel/>

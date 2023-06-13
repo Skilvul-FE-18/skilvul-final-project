@@ -1,6 +1,19 @@
+import { useDispatch } from "react-redux";
 import "../assets/css/Artikel.css";
+import { filterCategory, getArtikel } from "../redux/reducer/artikelReducer";
+import { useState } from "react";
 
 function FilterArtikel() {
+
+  const dispatch = useDispatch()
+  
+
+const handleCategoryClick = (category) => {
+ dispatch(filterCategory(category))
+}
+
+
+
   return (
     <>
       <section className="FilterArtikel">
@@ -23,18 +36,31 @@ function FilterArtikel() {
               id="navbarTogglerDemo03"
             >
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              <li className="nav-item px-3">
+                  <button className="badge text-bg-light" type="submit"
+                  onClick={() => handleCategoryClick('all')}
+                  >
+                    All
+                  </button>
+                </li>
                 <li className="nav-item px-3">
-                  <button className="badge text-bg-light" type="submit">
+                  <button className="badge text-bg-light" type="submit"
+                  onClick={() => handleCategoryClick('bullying')}
+                  >
                     Bullying
                   </button>
                 </li>
                 <li className="nav-item px-3">
-                  <button className="badge text-bg-light" type="submit">
+                  <button className="badge text-bg-light" type="submit"
+                  onClick={() => handleCategoryClick('cyber bullying')}
+                  >
                     Cyber Bullying
                   </button>
                 </li>
                 <li className="nav-item px-3">
-                  <button className="badge text-bg-light" type="submit">
+                  <button className="badge text-bg-light" type="submit"
+                  onClick={() => handleCategoryClick('verbal bullying')}
+                  >
                     Verbal Bullying
                   </button>
                 </li>
