@@ -17,14 +17,16 @@ function ListArtikel() {
   const loading = useSelector((state) => state.artikel);
   const higlightedArtikel = artikel.find((item) => item.categorihg === "true");
 
-  const filteredCategory = artikel.filter((item) => {
-    if (filterCategory === "all") {
-      return true;
-    } else {
-      return item.categori === filterCategory;
-    }
-  });
+  // const filteredCategory = artikel.filter((item) => {
+  //   if (filterCategory === "all") {
+  //     return true;
+  //   } else {
+  //     return item.categori === filterCategory;
+  //   }
+  // });
  
+    const filteredCategory = filterCategory === 'all' ? artikel : artikel.filter((item) => item.categori === filterCategory)
+
   const handleDetail = (id) => {
     navigation(`/detail/${id}`)
   }

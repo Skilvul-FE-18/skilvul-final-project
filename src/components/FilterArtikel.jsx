@@ -1,17 +1,21 @@
 import { useDispatch } from "react-redux";
 import "../assets/css/Artikel.css";
-import { filterCategory, getArtikel } from "../redux/reducer/artikelReducer";
+import { filterCategory, getArtikel, searchByKeyword } from "../redux/reducer/artikelReducer";
 import { useState } from "react";
 
 function FilterArtikel() {
 
   const dispatch = useDispatch()
+  const [keyword, setKeyword] = useState('')
   
 
 const handleCategoryClick = (category) => {
  dispatch(filterCategory(category))
 }
 
+const handleSearch = () => {
+  dispatch(searchByKeyword(keyword))
+}
 
 
   return (
@@ -65,16 +69,18 @@ const handleCategoryClick = (category) => {
                   </button>
                 </li>
               </ul>
-              <form className="d-flex" role="search">
+              <form className="d-flex">
                 <div className="input-group ">
                   <input
                     className="form-control"
-                    type="search"
+                    type="text"
+                    value={keyword}
+                    onChange={(e) => setKeyword(e.target.value)}
                     placeholder="Search"
                     aria-label="Search"
                   />
 
-                  <span className="input-group-text ">
+                  <span className="input-group-text " onClick={handleSearch}>
                     <i className="fas fa-search" id="show_eye"></i>
                   </span>
                 </div>

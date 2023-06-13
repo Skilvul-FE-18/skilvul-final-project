@@ -1,5 +1,4 @@
 import "../assets/css/Artikel.css";
-import imgHiglight from "../assets/img/img-highlight.png";
 
 function HighlightArtikel({imgHg, categori, date, title, excerpt, onClick}) {
 

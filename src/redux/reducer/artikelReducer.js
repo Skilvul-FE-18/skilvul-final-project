@@ -47,6 +47,16 @@ export const artikelSlice = createSlice({
     filterCategory: (state, action) => {
       state.filterCategory = action.payload;
     },
+    searchByKeyword: (state, action) => {
+      const keyword = action.payload.toLowerCase();
+      state.artikel = state.artikel.filter((item)=>{
+        return (
+
+          item.title.toLowerCase().includes(keyword) || item.description.toLowerCase().includes(keyword)
+        )
+      })
+      console.log(keyword)
+    }
   },
 });
 
@@ -54,6 +64,6 @@ export const artikelSlice = createSlice({
 
 
 
-export const { startFetching,successGetArtikel,filterCategory,setArtikel } = artikelSlice.actions;
+export const { startFetching,successGetArtikel,filterCategory,setArtikel,searchByKeyword } = artikelSlice.actions;
 
 export default artikelSlice.reducer;
