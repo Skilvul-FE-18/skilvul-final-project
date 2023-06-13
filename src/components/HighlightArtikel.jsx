@@ -1,7 +1,7 @@
 import "../assets/css/Artikel.css";
 import imgHiglight from "../assets/img/img-highlight.png";
 
-function HighlightArtikel({imgHg, categori, date, title, excerpt}) {
+function HighlightArtikel({imgHg, categori, date, title, excerpt, onClick}) {
 
    
 
@@ -27,7 +27,7 @@ function HighlightArtikel({imgHg, categori, date, title, excerpt}) {
                     {excerpt}
                   </p>
                   <p className="card-button mt-4">
-                  <a href="#" className="btn btn-outline-primary">
+                  <a href="#" className="btn btn-outline-primary" onClick={onClick}>
                       Baca lebih lanjut
                     </a>
                   </p>

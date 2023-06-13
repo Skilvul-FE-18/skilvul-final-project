@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/Register";
 import TentangKami from './pages/TentangKami';
 import Artikel from './pages/Artikel';
+import DetailArtikel from './pages/DetailArtikel';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/tentangKami" element={<TentangKami />}  />
           <Route exact path="/artikel" element={<Artikel />}  />
+          <Route exact path="/detail/:id" element={<DetailArtikel />} />
         </Routes>
         : 
         <Routes>
@@ -30,6 +32,7 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/tentangKami" element={<TentangKami />}  />
           <Route exact path="/artikel" element={<Artikel />}  />
+          <Route exact path="/detail/:id" element={<DetailArtikel />} />
         </Routes>
       }
       </BrowserRouter>

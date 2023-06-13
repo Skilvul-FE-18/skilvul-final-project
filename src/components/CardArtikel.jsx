@@ -1,6 +1,6 @@
 import React from 'react'
 
-function CardArtikel({img, kategori, date, tittle, excerpt}) {
+function CardArtikel({img, kategori, date, tittle, excerpt,onClick}) {
   return (
     <div className="card cardList mb-3" style={{ width: "18rem" }}>
     <img src={img} className="card-img-top" alt="..." />
@@ -15,7 +15,7 @@ function CardArtikel({img, kategori, date, tittle, excerpt}) {
       <p className="card-text">
         {excerpt}
       </p>
-      <a href="#" className="btn btn-outline-primary">
+      <a href="#" className="btn btn-outline-primary" onClick={onClick}>
         Baca lebih lanjut
       </a>
     </div>
