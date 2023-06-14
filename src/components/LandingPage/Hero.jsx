@@ -1,6 +1,6 @@
-import "../assets/css/LandingPage.css";
-import orang from "../assets/img/orang.png";
-import Banner from "./Banner";
+import "../../assets/css/LandingPage.css";
+import orang from "../../assets/img/orang.png";
+import Banner from "../Banner";
 
 function Hero() {
   return (

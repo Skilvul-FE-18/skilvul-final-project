@@ -1,4 +1,4 @@
-import "../assets/css/LandingPage.css";
+import "../../assets/css/LandingPage.css";
 
 function AboutBanner() {
   return (

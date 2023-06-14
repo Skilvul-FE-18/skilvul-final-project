@@ -1,4 +1,4 @@
-import "../assets/css/Artikel.css";
+import "../../assets/css/Artikel.css";
 
 function DisclaimerArtikel() {
   return (

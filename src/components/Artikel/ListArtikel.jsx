@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
-import "../assets/css/Artikel.css";
-import CardArtikel from "./CardArtikel";
+import "../../assets/css/Artikel.css";
+import CardArtikel from "../CardArtikel";
 import { useEffect } from "react";
-import {  getArtikel } from "../redux/reducer/artikelReducer";
-import HighlightArtikel from "./HighlightArtikel";
-import FilterArtikel from "./FilterArtikel";
+import {  getArtikel } from "../../redux/reducer/artikelReducer";
+import HighlightArtikel from "../HighlightArtikel";
+import FilterArtikel from "../FilterArtikel";
 import { useNavigate } from "react-router-dom";
 
 function ListArtikel() {
@@ -16,15 +16,6 @@ function ListArtikel() {
 
   const loading = useSelector((state) => state.artikel);
   const higlightedArtikel = artikel.find((item) => item.categorihg === "true");
-
-  // const filteredCategory = artikel.filter((item) => {
-  //   if (filterCategory === "all") {
-  //     return true;
-  //   } else {
-  //     return item.categori === filterCategory;
-  //   }
-  // });
- 
     const filteredCategory = filterCategory === 'all' ? artikel : artikel.filter((item) => item.categori === filterCategory)
 
   const handleDetail = (id) => {
@@ -33,7 +24,7 @@ function ListArtikel() {
 
   useEffect(() => {
     dispatch(getArtikel());
-  }, []);
+  }, [dispatch]);
 
   if (loading.isLoading) {
     return <p>Loading articles. . . </p>;

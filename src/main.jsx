@@ -4,6 +4,7 @@ import App from "./App.jsx";
 import "./assets/bootstrap/css/bootstrap.min.css";
 import "./assets/bootstrap/js/bootstrap.bundle.js";
 import "./index.css";
+import 'react-quill/dist/quill.snow.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { Provider } from "react-redux";
 import { store } from './redux/temp.js';

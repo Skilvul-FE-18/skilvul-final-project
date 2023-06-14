@@ -7,6 +7,10 @@ import Register from "./pages/Register";
 import TentangKami from './pages/TentangKami';
 import Artikel from './pages/Artikel';
 import DetailArtikel from './pages/DetailArtikel';
+import DashboardAdmin from "./pages/DashboardAdmin";
+import FormPelaporan from "./pages/FormPelaporan";
+import Create from "./pages/admin/artikel/create";
+import Update from "./pages/admin/artikel/update";
 
 
 function App() {
@@ -24,7 +28,9 @@ function App() {
           <Route exact path="/tentangKami" element={<TentangKami />}  />
           <Route exact path="/artikel" element={<Artikel />}  />
           <Route exact path="/detail/:id" element={<DetailArtikel />} />
-        </Routes>
+          <Route exact path="/formLaporan" element={<FormPelaporan data="send" />} />
+          {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
+        </Routes> 
         : 
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
@@ -33,8 +39,17 @@ function App() {
           <Route exact path="/tentangKami" element={<TentangKami />}  />
           <Route exact path="/artikel" element={<Artikel />}  />
           <Route exact path="/detail/:id" element={<DetailArtikel />} />
+          <Route exact path="/formLaporan" element={<FormPelaporan />} />
+          {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
         </Routes>
       }
+      <Routes>
+        <Route exact path="/admin" element={<DashboardAdmin />} />
+        <Route exact path="/admin/artikel" element={<DashboardAdmin />} />
+        <Route exact path="/admin/artikel/create" element={<Create />} />
+        <Route exact path="/admin/artikel/update/:id" element={<Update />} />
+      </Routes>
+      
       </BrowserRouter>
     </>
   );

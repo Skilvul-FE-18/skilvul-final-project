@@ -37,6 +37,8 @@ function Banner() {
 
   return (
     <>
+    <section className="banner">
+
       <div className="parallax mt-5">
         <div className="row">
           <Slider {...settings}>
@@ -85,6 +87,7 @@ function Banner() {
           </Slider>
         </div>
       </div>
+    </section>
     </>
   );
 }

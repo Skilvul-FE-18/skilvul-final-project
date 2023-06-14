@@ -1,5 +1,5 @@
-import bannerArtikel from "../assets/img/banner_artikel.png";
-import "../assets/css/LandingPage.css";
+import bannerArtikel from "../../assets/img/banner_artikel.png";
+import "../../assets/css/LandingPage.css";
 
 function HomeArtikel() {
   return (

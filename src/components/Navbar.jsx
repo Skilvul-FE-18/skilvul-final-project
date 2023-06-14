@@ -62,9 +62,9 @@ function Navbar() {
                 </NavLink>
               </li>
               <li className="nav-item ">
-                <a className="nav-link" href="/pelaporan.html">
+                <NavLink className="nav-link" to="/formLaporan">
                   Pelaporan
-                </a>
+                </NavLink>
               </li>
               <li className="nav-item px-3">
                 <NavLink className="nav-link" to="/artikel">

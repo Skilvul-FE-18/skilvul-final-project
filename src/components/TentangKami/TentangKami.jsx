@@ -1,14 +1,14 @@
-import '../assets/css/TentangKami.css'
-import hero from '../assets/img/hero.png'
-import ikin from '../assets/img/gambar-ikin.png'
-import nalan from '../assets/img/gambar-nalan.png'
-import zanu from '../assets/img/gambar-zanu.png'
-import mila from '../assets/img/gambar-mila.png'
+import '../../assets/css/TentangKami.css'
+import hero from '../../assets/img/hero.png'
+import ikin from '../../assets/img/gambar-ikin.png'
+import nalan from '../../assets/img/gambar-nalan.png'
+import zanu from '../../assets/img/gambar-zanu.png'
+import mila from '../../assets/img/gambar-mila.png'
 
 function TentangKamiComponent() {
   return (
     <>
-    <div className="container wrapper">
+    <div className="container">
     <section className="hero">
     <div className="row">
                 <p className="text-heading text-center">Buddy</p>

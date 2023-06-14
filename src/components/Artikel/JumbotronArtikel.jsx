@@ -1,4 +1,4 @@
-import imgJumbotron from "../assets/img/img-jumbotron.png";
+import imgJumbotron from "../../assets/img/img-jumbotron.png";
 
 function JumbotronArtikel() {
   return (

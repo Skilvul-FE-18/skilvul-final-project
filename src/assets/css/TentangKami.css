@@ -68,3 +68,7 @@
                transition: 0.4s ease;
                cursor: pointer;
     }
+
+    .wrapper{
+        background-color:  #F4F7F9;
+    }

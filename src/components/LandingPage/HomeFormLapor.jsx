@@ -1,4 +1,4 @@
-import Lapor from '../assets/img/lapor.png'
+import Lapor from '../../assets/img/lapor.png'
 
 function HomeFormLapor() {
   return (

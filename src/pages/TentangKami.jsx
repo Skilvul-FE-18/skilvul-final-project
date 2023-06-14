@@ -1,18 +1,16 @@
-import TentangKamiComponent from '../components/TentangKami'
-import MainLayout from '../layout/MainLayout'
+import TentangKamiComponent from "../components/TentangKami/TentangKami";
+import MainLayout from "../layout/MainLayout";
 
 function TentangKami() {
   return (
     <>
-    {/* <Navbar />
-  <TentangKamiComponent />
-    <FooterAtas />
-    <FooterBawah /> */}
-    <MainLayout>
-      <TentangKamiComponent />
-    </MainLayout>
+      <MainLayout>
+        <section className="wrapper">
+          <TentangKamiComponent />
+        </section>
+      </MainLayout>
     </>
-  )
+  );
 }
 
-export default TentangKami
+export default TentangKami;
