@@ -1,46 +1,140 @@
-import logo from '../assets/img/logo.png'
+import { NavLink } from "react-router-dom";
+import logo from "../assets/img/logo.png";
+import { useDispatch, useSelector } from "react-redux";
+import { logout, setAuthStatus } from "../redux/reducer/userReducer";
+import Cookies from "universal-cookie";
+
+const ToolsCookies = new Cookies();
 
 function Navbar() {
+  const authStatus = useSelector((state) => state.users.authStatus);
+  const userData = useSelector((state) => state.users.userData);
+
+  const disppatch = useDispatch();
+
+  const handleLogout = () => {
+    // Lakukan logika logout di sini
+    // Contoh sederhana: Mengatur isLoggedIn menjadi false dan menghapus userName
+    disppatch(logout());
+    ToolsCookies.remove('user_data', {path: '/'})
+    ToolsCookies.remove('status_login', {path: '/'})
+
+  };
+
   return (
     <>
-      <nav className="navbar navbar-expand-md sticky-top" style={{ background: '#FFFFFF' }}>
+      <nav
+        className="navbar navbar-expand-md sticky-top"
+        style={{ background: "#FFFFFF" }}
+      >
         <div className="container">
           <a className="navbar-brand" href="#">
-            <img src={logo} alt="Logo" width="40" height="40" className="d-inline-block align-text-center" />
-            Buddy
+            <img
+              src={logo}
+              alt="Logo"
+              width="40"
+              height="40"
+              className="d-inline-block align-text-center"
+            />
+            &nbsp;&nbsp;Buddy
           </a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mx-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link" aria-current="page" href="landingpage.html">Beranda</a>
+                <NavLink className="nav-link" to="/">
+                  Beranda
+                </NavLink>
               </li>
               <li className="nav-item px-3">
-                <a className="nav-link" href="#tentangKami.html">Tentang Kami</a>
+                <NavLink className="nav-link" to="/tentangKami">
+                  Tentang Kami
+                </NavLink>
               </li>
               <li className="nav-item ">
-                <a className="nav-link" href="/pelaporan.html">Pelaporan</a>
+                <NavLink className="nav-link" to="/pelaporan">
+                  Pelaporan
+                </NavLink>
               </li>
-
+              <li className="nav-item px-3">
+                <NavLink className="nav-link" to="/artikel">
+                  Artikel
+                </NavLink>
+              </li>
             </ul>
             <ul className="navbar-nav">
-              {/* <a className="text-decoration-none" href="#">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
-                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                    <path fillRule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                  </svg>
-                
-                  </a> */}
-              <button className="btn btn-outline-primary" type="submit">Masuk</button>
-              <button className="btn btn-primary mx-2" type="submit">Daftar</button>
+              {authStatus ? (
+                <div className="dropdown">
+                  <a
+                    className="dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="22"
+                      height="22"
+                      fill="currentColor"
+                      className="bi bi-person-circle"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                      <path
+                        fillRule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+                      />
+                    </svg>
+                    <span>{userData.username}</span>
+                  </a>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Action
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Another action
+                      </a>
+                    </li>
+                    <li>
+                      <button
+                        className="dropdown-item"
+                        onClick={handleLogout}
+                        type="button"
+                      >
+                        Logout
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              ) : (
+                <>
+                  <NavLink className="nav-link" to="/login">
+                    <button className="btn btn-outline-primary">Masuk</button>
+                  </NavLink>
+                  <NavLink className="nav-link" to="/register">
+                    <button className="btn btn-primary ">Daftar</button>
+                  </NavLink>
+                </>
+              )}
             </ul>
           </div>
         </div>
       </nav>
     </>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

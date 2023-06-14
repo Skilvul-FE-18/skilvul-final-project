@@ -1,25 +1,26 @@
-import Slider from '../components/Slider';
-import Home from '../components/Home';
-import MainLayout from '../layout/MainLayout';
-import Artikel from '../components/Artikel';
-import About from '../components/About';
-import FormPelaporan from '../components/Lapor';
-MainLayout
+
+import '../assets/css/LandingPage.css'
+import MainLayout from "./../layout/MainLayout";
+import Hero from '../components/Hero';
+import AboutBanner from '../components/AboutBanner';
+import HomeArtikel from '../components/HomeArtikel';
+import HomeListArtikel from '../components/HomeListArtikel';
+import HomeFormLapor from '../components/HomeFormLapor';
 
 function LandingPage() {
-    return (
-        <div>
-            <MainLayout>
-
-                <Home />
-                <About />
-                <Artikel />
-                <Slider />
-                <FormPelaporan />
-            </MainLayout>
-
-        </div>
-    );
+  return (
+    <>
+      
+        <MainLayout>
+          <Hero />
+          <AboutBanner />
+          <HomeArtikel />
+          <HomeListArtikel />
+          <HomeFormLapor />
+        </MainLayout>
+      
+    </>
+  );
 }
 
 export default LandingPage;
