@@ -20,9 +20,9 @@ function App() {
   console.log("test")
   return (
     <>
+      <BrowserRouter>
       {
         store.authStatus ? 
-      <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
@@ -32,19 +32,17 @@ function App() {
           <Route exact path="/detail/:id" element={<DetailArtikel />} />
           <Route exact path="/formLaporan" element={<FormPelaporan data="send" />} />
           <Route exact path="/profile/:id" element={<EditProfil />} />
-          <Route exact path="/admin" element={<DashboardAdmin />}>
+          {/* <Route exact path="/admin" element={<DashboardAdmin />}>
             <Route exact path="artikel" element={<DashboardAdmin />} />
             <Route exact path="artikel/create" element={<Create />} />
             <Route exact path="artikel/update/:id" element={<Update />} />
-          </Route>
+          </Route> */}
         {/* <Route exact path="/admin/artikel" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel/create" element={<Create />} />
         <Route exact path="/admin/artikel/update/:id" element={<Update />} /> */}
           {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
         </Routes> 
-      </BrowserRouter>
         : 
-      <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
@@ -55,16 +53,15 @@ function App() {
           <Route exact path="/formLaporan" element={<FormPelaporan />} />
           {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
         </Routes>
-        </BrowserRouter>
       }
-      {/* <Routes>
+      <Routes>
         <Route exact path="/admin" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel/create" element={<Create />} />
         <Route exact path="/admin/artikel/update/:id" element={<Update />} />
-      </Routes> */}
+      </Routes>
       
-      
+      </BrowserRouter>
     </>
   );
 }

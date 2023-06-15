@@ -117,8 +117,8 @@ function Update() {
         <input
           type="text"
           className="form-control mt-2"
-          id="image"
-            name="image"
+          id="image_source"
+            name="image_source"
             value={formData.image_source}
             onChange={handleChange}
           placeholder="masukkan url image"

@@ -1,9 +1,10 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserById, logout} from "../redux/reducer/userReducer";
+import { getUser, getUserById, logout} from "../redux/reducer/userReducer";
 import Cookies from "universal-cookie";
 import '../assets/css/Navbar.css'
+import { useEffect } from "react";
 
 const ToolsCookies = new Cookies();
 
@@ -11,22 +12,29 @@ function Navbar() {
   const authStatus = useSelector((state) => state.users.authStatus);
   const userData = useSelector((state) => state.users.userData);
 
-  const disppatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+   dispatch(getUser())
+  }, [dispatch]);
+
   const handleEditProfile = () => {
-    disppatch(getUserById(userData.id)); // Mengambil data pengguna berdasarkan ID
-    navigate(`/profile/${userData.id}`); 
+    // Mengambil data pengguna berdasarkan ID
+    const id = userData.id;
+    navigate(`/profile/${id}`); 
+    dispatch(getUserById(id));
   }
 
   const handleLogout = () => {
     // Lakukan logika logout di sini
     // Contoh sederhana: Mengatur isLoggedIn menjadi false dan menghapus userName
-    disppatch(logout());
+    dispatch(logout());
     ToolsCookies.remove('user_data', {path: '/'})
     ToolsCookies.remove('status_login', {path: '/'})
 
   };
+
 
   return (
     <>
@@ -102,17 +110,15 @@ function Navbar() {
                         d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
                       />
                     </svg>
-                    <span>{userData.firstname}</span>
+                    {userData && <span>Welcome, {userData.name}</span>}
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                    <button
-                        className="dropdown-item"
-                        type="button"
-                        onClick={handleEditProfile}
-                      >
+                    <NavLink className="nav-link" to={`/profile/${userData.id}`}>
+                      <button className="dropdown-item" type="button" onClick={handleEditProfile}>
                         Edit Profile
                       </button>
+                    </NavLink>
                     </li>
                     <li>
                       <button
