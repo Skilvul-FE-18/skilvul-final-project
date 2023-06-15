@@ -1,4 +1,4 @@
-
+import { PropTypes } from "prop-types";
 
 function ListArtikelAdmin({artikel, onDeleteArtikel, onUpdateArtikel}) {
   return (
@@ -15,11 +15,15 @@ function ListArtikelAdmin({artikel, onDeleteArtikel, onUpdateArtikel}) {
                 <div className="card-body">
                     <div className="card-category d-flex mt-0">
 
-                    <p className="">{item.categori}</p>
+                    <p className="badge bg-primary">{item.categori}</p>
                     <p className="px-5">{item.createdAt}</p>
                     </div>
                   <h5 className="card-title">{item.title}</h5>
-                  <p className="card-text">{item.description}</p>
+                  <p className="card-text">{item.excerpt}</p>
+                  <div
+                  className="card-text"
+                  dangerouslySetInnerHTML={{ __html: item.description }}
+                ></div>
                 </div>
               </div>
               <div className="col-md-2">
@@ -36,6 +40,12 @@ function ListArtikelAdmin({artikel, onDeleteArtikel, onUpdateArtikel}) {
   
     </>
   )
+}
+
+ListArtikelAdmin.propTypes = {
+  artikel: PropTypes.array.isRequired,
+  onDeleteArtikel: PropTypes.func.isRequired,
+  onUpdateArtikel: PropTypes.func.isRequired,
 }
 
 export default ListArtikelAdmin

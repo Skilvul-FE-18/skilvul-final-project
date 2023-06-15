@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/img/logo.png";
 import { useDispatch, useSelector } from "react-redux";
-import { logout, setAuthStatus } from "../redux/reducer/userReducer";
+import { getUserById, logout} from "../redux/reducer/userReducer";
 import Cookies from "universal-cookie";
+import '../assets/css/Navbar.css'
 
 const ToolsCookies = new Cookies();
 
@@ -11,6 +12,12 @@ function Navbar() {
   const userData = useSelector((state) => state.users.userData);
 
   const disppatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleEditProfile = () => {
+    disppatch(getUserById(userData.id)); // Mengambil data pengguna berdasarkan ID
+    navigate(`/profile/${userData.id}`); 
+  }
 
   const handleLogout = () => {
     // Lakukan logika logout di sini
@@ -28,15 +35,15 @@ function Navbar() {
         style={{ background: "#FFFFFF" }}
       >
         <div className="container">
-          <a className="navbar-brand" href="#">
+          <a className="navbar-brand">
             <img
               src={logo}
               alt="Logo"
               width="40"
               height="40"
-              className="d-inline-block align-text-center"
+              className="d-inline-block align-text-center "
             />
-            Buddy
+             Buddy
           </a>
           <button
             className="navbar-toggler"
@@ -95,18 +102,17 @@ function Navbar() {
                         d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
                       />
                     </svg>
-                    <span>{userData.username}</span>
+                    <span>{userData.firstname}</span>
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                      <a className="dropdown-item" href="#">
-                        Action
-                      </a>
-                    </li>
-                    <li>
-                      <a className="dropdown-item" href="#">
-                        Another action
-                      </a>
+                    <button
+                        className="dropdown-item"
+                        type="button"
+                        onClick={handleEditProfile}
+                      >
+                        Edit Profile
+                      </button>
                     </li>
                     <li>
                       <button

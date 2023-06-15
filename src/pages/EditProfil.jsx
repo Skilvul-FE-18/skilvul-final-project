@@ -1,13 +1,30 @@
+import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/editProfile.css";
 import ikin from "../assets/img/gambar-ikin.png";
-import DashboardLayout from "./../layout/DashboardLayout";
+import Navbar from "../components/Navbar";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getUser, updateUser } from "../redux/reducer/userReducer";
 
 function EditProfil() {
+  const userData = useSelector((state) => state.users.userData);
+  const dispatch = useDispatch();
+  const {id} = useParams()
+ const [updatedUser, setUpdatedUser] = useState(userData)
+
+const handleUpdateUser = () => {
+dispatch(updateUser(id, updatedUser))
+}
+  
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
+
   return (
     <>
     <main>
 
-      <DashboardLayout>
+      <Navbar />
         <section>
           <div className="container">
             <div className="row mt-5">
@@ -26,12 +43,6 @@ function EditProfil() {
                         </div>
                       </div>
                       <h5>Ikin Sugiharto</h5>
-
-                      <p>Mahasiswa</p>
-                      <hr />
-                      <button className="btn btn-outline-primary">Edit</button>
-                      <br />
-                      <button className="btn btn-primary">Logout</button>
                     </div>
                   </div>
                 </div>
@@ -47,33 +58,56 @@ function EditProfil() {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
-                      <label >Nama Lengkap</label>
+                      <label >Username</label>
                       <input type="text" className="form-control mt-2" id="nama" />
                     </div>
                     <div className="form-group">
-                      <label >Nama Lengkap</label>
+                      <label >Email</label>
                       <input type="text" className="form-control mt-2" id="nama" />
                     </div>
                     <div className="form-group">
-                      <label >Nama Lengkap</label>
+                      <label >First Name</label>
                       <input type="text" className="form-control mt-2" id="nama" />
                     </div>
                     <div className="form-group">
-                      <label >Nama Lengkap</label>
+                      <label >Last Name</label>
+                      <input type="text" className="form-control mt-2" id="nama" />
+                    </div>
+                    <div className="form-group">
+                      <label >Password</label>
                       <input type="text" className="form-control mt-2" id="nama" />
                     </div>
                   </div>
                   <div className="col-md-6">
                   <div className="form-group">
-                      <label >Nama Lengkap</label>
+                      <label >Full Name</label>
                       <input type="text" className="form-control mt-2" id="nama" />
                     </div>
+                    <div className="form-group">
+                      <label >Address</label>
+                      <input type="text" className="form-control mt-2" id="nama" />
+                    </div>
+                    <div className="form-group">
+                      <label >Tanggal Lahir</label>
+                      <input type="text" className="form-control mt-2" id="nama" />
+                    </div>
+                    <div className="form-group">
+                      <label >Gender</label>
+                      <input type="text" className="form-control mt-2" id="nama" />
+                    </div>
+                    <div className="form-group">
+                      <label >Umur</label>
+                      <input type="text" className="form-control mt-2" id="nama" />
+                    </div>
+  
                   </div>
                 </div>
                 <hr />
                 <div className="row pb-4">
                   <div className="col-md-12">
-                    <button className="btn btn-primary">Ubah Profile</button>
+                    <button className="btn btn-primary"
+                    onClick={handleUpdateUser}
+                    >Ubah Profile</button>
                     
                   </div>
                 </div>
@@ -82,7 +116,7 @@ function EditProfil() {
             </div>
           </div>
         </section>
-      </DashboardLayout>
+      
     </main>
     </>
   );

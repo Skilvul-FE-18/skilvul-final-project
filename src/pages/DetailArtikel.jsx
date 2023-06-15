@@ -64,7 +64,11 @@ function DetailArtikel() {
                           <p>{el.title}</p>
                         </div>
                         <div className="desc mb-5">
-                          <p>{el.description}</p>
+                          {/* <p>{el.description}</p> */}
+                          <div
+                  className="card-text"
+                  dangerouslySetInnerHTML={{ __html: el.description }}
+                ></div>
                         </div>
                       </div>
                     </div>

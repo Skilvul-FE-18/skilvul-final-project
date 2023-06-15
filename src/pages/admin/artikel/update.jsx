@@ -3,6 +3,7 @@ import AdminLayout from "../../../layout/AdminLayout";
 import {  updateArtikel } from "../../../redux/reducer/artikelReducer";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import ReactQuill from "react-quill";
 
 
 function Update() {
@@ -14,19 +15,43 @@ function Update() {
         categori: '',
         createdAt: '',
         title: '',
+        image_source: '',
+        excerpt: '',
         description: ''
         });
-
+        
         const handleChange = (e) => {
             setFormData((prevData) => ({
               ...prevData,
               [e.target.name]: e.target.value,
             }));
           };
+          const handleQuillChange = (content) => {
+            setFormData((prevState) => ({
+              ...prevState,
+              description: content,
+            }));
+          }
+          const getText = (html) => {
+            const tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+          };
           const handleSubmit = () => {
             dispatch(updateArtikel(id, formData));
             navigate("/admin/artikel");
           };
+
+          const modules = {
+            toolbar: [
+              [{ header: [1, 2, false] }],
+              ["bold", "italic", "underline", "strike", "blockquote"],
+              [ { list: "ordered" }, { list: "bullet" } ],
+              ["link", "image"],
+              ["clean"],
+            ],
+            
+          }
 
 
   useEffect(() => {
@@ -37,6 +62,8 @@ function Update() {
         description: currentArtikel.description,
         categori: currentArtikel.categori,
         createdAt: currentArtikel.createdAt,
+        image_source: currentArtikel.image_source,
+        excerpt: currentArtikel.excerpt,
 
       });
     }
@@ -92,16 +119,41 @@ function Update() {
           className="form-control mt-2"
           id="image"
             name="image"
-            value={formData.image}
+            value={formData.image_source}
             onChange={handleChange}
           placeholder="masukkan url image"
+          style={{
+            maxHeight: "100px",
+          }}
         />
+      </div>
+    </div>
+    <div className="form-group mt-3">
+      <label>Excerpt</label>
+      <div className="form-floating ">
+        <textarea
+          className="form-control"
+          placeholder="Leave a comment here"
+          id="excerpt"
+            name="excerpt"
+            value={formData.excerpt}
+            onChange={handleChange}
+          style={{ height: "100px" }}
+        ></textarea>
+         {/* <ReactQuill
+            theme="snow"
+            id="excerpt"
+            name="excerpt"
+            value={formData.excerpt}
+            onChange={handleQuillChange}
+            modules={modules}
+          /> */}
       </div>
     </div>
     <div className="form-group mt-3">
       <label>Description</label>
       <div className="form-floating ">
-        <textarea
+        {/* <textarea
           className="form-control"
           placeholder="Leave a comment here"
           id="description"
@@ -109,7 +161,15 @@ function Update() {
             value={formData.description}
             onChange={handleChange}
           style={{ height: "100px" }}
-        ></textarea>
+        ></textarea> */}
+         <ReactQuill
+            theme="snow"
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleQuillChange}
+            modules={modules}
+          />
       </div>
     </div>
     <div className="row mt-3">

@@ -1,13 +1,28 @@
+import { useEffect, useState } from "react";
 import "../../assets/css/LandingPage.css";
 import orang from "../../assets/img/orang.png";
 import Banner from "../Banner";
 
 function Hero() {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <section className="home">
       <div className="container">
         <div className="row align-items-center">
-          <div className="col-md-6 text-dark mt-5">
+          <div className="col-sm-12 col-md-6 col-lg-6 text-dark mt-5">
             <p className="hero-tag">#LawanBullying</p>
             <p className="hero-heading">Jangan Takut!</p>
             <p className="hero-heading" style={{
@@ -20,14 +35,14 @@ function Hero() {
               pendidikan.
             </p>
           </div>
-          <div className="col-md-6 mt-5">
+          <div className="col-sm-12 col-md-6 col-lg-6 mt-5">
             <div className="d-flex justify-content-end">
 
             <img src={orang} className="wok-profile w-485"  />
             </div>
           </div>
         </div>
-        <Banner />
+        {windowWidth >= 768 ? <Banner /> : null}
       </div>
       <br />
       <br />

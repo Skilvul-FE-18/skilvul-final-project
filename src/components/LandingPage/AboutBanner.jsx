@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import "../../assets/css/LandingPage.css";
 
 function AboutBanner() {
@@ -11,7 +12,9 @@ function AboutBanner() {
             meningkatkan kesadaran serta kepedulian terhadap kasus bullying di
             dunia pendidikan terutama di Indonesia.
           </p>
+          <NavLink to="/tentangKami">
           <button>Baca Selengkapnya</button>
+          </NavLink>
         </div>
       </section>
     </>

@@ -1,5 +1,6 @@
 import bannerArtikel from "../../assets/img/banner_artikel.png";
 import "../../assets/css/LandingPage.css";
+import { NavLink } from "react-router-dom";
 
 function HomeArtikel() {
   return (
@@ -15,10 +16,10 @@ function HomeArtikel() {
           </div>
         </div>
         <div className="row">
-          <div className="col-6 text-center">
+          <div className="col-sm-12 col-md-6 text-center">
             <img src={bannerArtikel} alt="image" style={{height:'320px'}} />
           </div>
-          <div className="col-6">
+          <div className="col-sm-12 col-md-6">
             <div className="artikel-text">
               <br />
               <br />
@@ -27,7 +28,9 @@ function HomeArtikel() {
                 Kami Menyediakan informasi dan bacaan yang cocok untuk sobat
                 buddy meningkatkan pengetahuan mengenai bullying
               </p>
-              <button href="#">Lihat Selengkapnya</button>
+              <NavLink to="/artikel">
+              <button>Lihat Selengkapnya</button>
+              </NavLink>
             </div>
           </div>
         </div>

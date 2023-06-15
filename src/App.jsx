@@ -11,6 +11,7 @@ import DashboardAdmin from "./pages/DashboardAdmin";
 import FormPelaporan from "./pages/FormPelaporan";
 import Create from "./pages/admin/artikel/create";
 import Update from "./pages/admin/artikel/update";
+import EditProfil from './pages/EditProfil';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/artikel" element={<Artikel />}  />
           <Route exact path="/detail/:id" element={<DetailArtikel />} />
           <Route exact path="/formLaporan" element={<FormPelaporan data="send" />} />
+          <Route exact path="/profile/:id" element={<EditProfil />} />
           {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
         </Routes> 
         : 

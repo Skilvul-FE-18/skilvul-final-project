@@ -32,7 +32,7 @@ export const createArtikel = (artikelData) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
-      data: artikelData,
+      data: JSON.stringify(artikelData),
     };
 
     let response = await axios(config);
@@ -69,7 +69,7 @@ export const updateArtikel = (artikelId, artikelData) => async (dispatch) => {
       headers: {
         "Content-Type": "application/json",
       },
-      data: artikelData,
+      data: JSON.stringify(artikelData),
     };
 
     await axios(config);

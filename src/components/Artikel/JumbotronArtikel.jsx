@@ -17,7 +17,7 @@ function JumbotronArtikel() {
                 style={{
                   fontSize: "55px",
                   fontWeight: "700",
-                  paddingTop: "100px",
+                  paddingTop: "50px",
                 }}
               >
                 Temukan Pengetahuan

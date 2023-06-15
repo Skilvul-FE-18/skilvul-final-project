@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
+import { PropTypes } from "prop-types";
 import { updateArtikel } from '../redux/reducer/artikelReducer';
+import ReactQuill from "react-quill";
 
 function UpdateFormArtikelAdmin({onSubmit}) {
     const { id } = useParams();
@@ -12,7 +14,8 @@ function UpdateFormArtikelAdmin({onSubmit}) {
         categori: '',
         createdAt: '',
         title: '',
-        image: '',
+        image_source: '',
+        excerpt: '',
         description: ''
         });
 
@@ -22,10 +25,34 @@ function UpdateFormArtikelAdmin({onSubmit}) {
               [e.target.name]: e.target.value,
             }));
           };
+
+          const handleQuillChange = (content) => {
+            setFormData((prevState) => ({
+              ...prevState,
+              description: content,
+              excerpt: getText(content).substring(0, 100),
+            }));
+          }
+          const getText = (html) => {
+            const tmp = document.createElement("DIV");
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || "";
+          };
           const handleSubmit = () => {
             dispatch(updateArtikel(id, formData));
             navigate("/admin/artikel");
           };
+
+          const modules = {
+            toolbar: [
+              [{ header: [1, 2, false] }],
+              ["bold", "italic", "underline", "strike", "blockquote"],
+              [ { list: "ordered" }, { list: "bullet" } ],
+              ["link", "image"],
+              ["clean"],
+            ],
+            
+          }
 
           useEffect(() => {
             const currentArtikel = artikel.find((item) => item.id === id);
@@ -33,7 +60,10 @@ function UpdateFormArtikelAdmin({onSubmit}) {
               setFormData({
                 title: currentArtikel.title,
                 description: currentArtikel.description,
-                category: currentArtikel.category,
+                categori: currentArtikel.categori,
+                createdAt: currentArtikel.createdAt,
+                image_source: currentArtikel.image_source,
+                excerpt: currentArtikel.excerpt,
               });
             }
           }, [artikel, id]);
@@ -85,16 +115,16 @@ function UpdateFormArtikelAdmin({onSubmit}) {
           className="form-control mt-2"
           id="image"
             name="image"
-            value={formData.image}
+            value={formData.image_source}
             onChange={handleChange}
           placeholder="masukkan url image"
         />
       </div>
     </div>
     <div className="form-group mt-3">
-      <label>Description</label>
+      <label>Excerpt</label>
       <div className="form-floating ">
-        <textarea
+        {/* <textarea
           className="form-control"
           placeholder="Leave a comment here"
           id="description"
@@ -102,7 +132,37 @@ function UpdateFormArtikelAdmin({onSubmit}) {
             value={formData.description}
             onChange={handleChange}
           style={{ height: "100px" }}
-        ></textarea>
+        ></textarea> */}
+         <ReactQuill
+            theme="snow"
+            id="description"
+            name="description"
+            value={formData.excerpt}
+            onChange={handleQuillChange}
+            modules={modules}
+          />
+      </div>
+    </div>
+    <div className="form-group mt-3">
+      <label>Description</label>
+      <div className="form-floating ">
+        {/* <textarea
+          className="form-control"
+          placeholder="Leave a comment here"
+          id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+          style={{ height: "100px" }}
+        ></textarea> */}
+         <ReactQuill
+            theme="snow"
+            id="description"
+            name="description"
+            value={formData.description}
+            onChange={handleQuillChange}
+            modules={modules}
+          />
       </div>
     </div>
     <div className="row mt-3">
@@ -114,6 +174,10 @@ function UpdateFormArtikelAdmin({onSubmit}) {
     </div>
   </div>
   )
+}
+
+UpdateFormArtikelAdmin.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default UpdateFormArtikelAdmin

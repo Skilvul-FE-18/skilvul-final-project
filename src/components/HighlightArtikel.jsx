@@ -1,8 +1,9 @@
 import "../assets/css/Artikel.css";
+import { PropTypes } from "prop-types";
 
 function HighlightArtikel({imgHg, categori, date, title, excerpt, onClick}) {
 
-   
+  const truncatedExcerpt = excerpt.length > 100 ? `${excerpt.substring(0, 100)}...` : excerpt;
 
   return (
     <section className="HighlightArtikel">
@@ -23,7 +24,7 @@ function HighlightArtikel({imgHg, categori, date, title, excerpt, onClick}) {
                   </div>
                   <p className="card-title mt-4">{title}</p>
                   <p className="card-text mt-4">
-                    {excerpt}
+                    {truncatedExcerpt}
                   </p>
                   <p className="card-button mt-4">
                   <a href="#" className="btn btn-outline-primary" onClick={onClick}>
@@ -39,6 +40,15 @@ function HighlightArtikel({imgHg, categori, date, title, excerpt, onClick}) {
       </div>
     </section>
   );
+}
+
+HighlightArtikel.propTypes = {
+  imgHg: PropTypes.string.isRequired,
+  categori: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  excerpt: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 }
 
 export default HighlightArtikel;

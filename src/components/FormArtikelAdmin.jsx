@@ -1,24 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { PropTypes } from "prop-types";
 import ReactQuill from "react-quill";
 
 function FormArtikelAdmin({ onSubmit }) {
   const [value, setValue] = useState({
     categori: "",
     createdAt: "",
+    image_source: "",
     title: "",
+    excerpt: "",
     description: "",
   });
+   const [editorValue, setEditorValue] = useState("")
 
-  // const [quillValue, setQuillValue] = useState("");
+  useEffect(() => {
+    if(value.description !== editorValue){
+      setValue((prevState)=> ({
+        ...prevState,
+        description: editorValue
+      }))
+    }
+  }, [editorValue]);
 
   const handleSubmit = () => {
     onSubmit(value);
     setValue({
       categori: "",
       createdAt: "",
+      image_source: "",
       title: "",
+      excerpt: "",
       description: "",
-    });
+    })
+    setEditorValue("")
   };
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +41,27 @@ function FormArtikelAdmin({ onSubmit }) {
       [name]: value,
     }));
   };
+
+  const handleQuillChange = (content) => {
+    setEditorValue(content)
+  }
+
+  const getText = (html) => {
+    const tmp = document.createElement("DIV");
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText || "";
+  };
+
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [ { list: "ordered" }, { list: "bullet" } ],
+      ["link", "image"],
+      ["clean"],
+    ],
+    
+  }
 
   return (
     <div className="row">
@@ -72,18 +107,40 @@ function FormArtikelAdmin({ onSubmit }) {
           <input
             type="text"
             className="form-control mt-2"
-            id="image"
-            name="image"
-            value={value.image}
+            id="image_source"
+            name="image_source"
+            value={value.image_source}
             onChange={handleChange}
             placeholder="masukkan url image"
           />
         </div>
       </div>
       <div className="form-group mt-3">
-        <label>Description</label>
+        <label>Excerpt</label>
         <div className="form-floating ">
           <textarea
+          className="form-control"
+          placeholder="Leave a comment here"
+          id="excerpt"
+            name="excerpt"
+            value={value.excerpt}
+            onChange={handleChange}
+          style={{ height: "100px" }}
+        ></textarea>
+          {/* <ReactQuill
+            theme="snow"
+            id="excerpt"
+            name="excerpt"
+            value={value.excerpt}
+            onChange={handleQuillChange}
+            modules={modules}
+          /> */}
+        </div>
+      </div>
+      <div className="form-group mt-3">
+        <label>Description</label>
+        <div className="form-floating ">
+          {/* <textarea
           className="form-control"
           placeholder="Leave a comment here"
           id="description"
@@ -91,14 +148,15 @@ function FormArtikelAdmin({ onSubmit }) {
             value={value.description}
             onChange={handleChange}
           style={{ height: "100px" }}
-        ></textarea>
-          {/* <ReactQuill
+        ></textarea> */}
+          <ReactQuill
             theme="snow"
             id="description"
             name="description"
-            value={value.description}
-            onChange={handleChange}
-          /> */}
+            value={editorValue}
+            onChange={handleQuillChange}
+            modules={modules}
+          />
         </div>
       </div>
       <div className="row mt-3">
@@ -110,6 +168,10 @@ function FormArtikelAdmin({ onSubmit }) {
       </div>
     </div>
   );
+}
+
+FormArtikelAdmin.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
 }
 
 export default FormArtikelAdmin;

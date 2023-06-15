@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import "../assets/css/Artikel.css";
-import { filterCategory, getArtikel, searchByKeyword } from "../redux/reducer/artikelReducer";
+import { filterCategory, searchByKeyword } from "../redux/reducer/artikelReducer";
 import { useState } from "react";
 
 function FilterArtikel() {

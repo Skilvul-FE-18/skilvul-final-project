@@ -1,37 +1,62 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../../assets/css/LandingPage.css";
 import backgroundBanner from "../../assets/img/background_bullying.png";
-import imgCard from '../../assets/img/img-card-1.png'
+import imgCard from "../../assets/img/img-card-1.png";
 import CardHome from "../CardHome";
 import { useEffect } from "react";
 import { getArtikel } from "../../redux/reducer/artikelReducer";
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
 
 function HomeListArtikel() {
-
   const dispatch = useDispatch();
-  const { artikel, isLoading, filterCategory } = useSelector(
-    (state) => state.artikel
-  );
-  console.log(artikel)
+  const { artikel } = useSelector((state) => state.artikel);
+  console.log(artikel);
+  const navigate = useNavigate();
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3
+    slidesToScroll: 3,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
+  const handleDetail = (id) => {
+    navigate(`/detail/${id}`);
+  };
 
   useEffect(() => {
     dispatch(getArtikel());
-  }, []);  
-
+  }, [dispatch]);
 
   return (
-
-
     <section
       className="HomeListArtikel mt-5"
       style={{
@@ -48,24 +73,20 @@ function HomeListArtikel() {
             buddy lakukan ya.
           </p>
         </div>
-        <div className="row justify-content-md-center">
+        <div className="row justify-content-md-center mt-5">
           <Slider {...settings}>
-
-            {
-                artikel.map((item) => {
-                    return (
-                        <div className="col-md-4" key={item.id}>
-                            <CardHome 
-                            src={item.image_source}
-                            tittle={item.title}
-                            />
-                        </div>
-                    )
-                }
-                )
-            }
+            {artikel.map((item) => {
+              return (
+                <div className="col-md-4" key={item.id}>
+                  <CardHome
+                    src={item.image_source}
+                    tittle={item.title}
+                    onClick={() => handleDetail(item.id)}
+                  />
+                </div>
+              );
+            })}
           </Slider>
-
         </div>
       </div>
     </section>

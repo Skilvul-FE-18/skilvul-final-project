@@ -18,6 +18,7 @@ const Create = () => {
 
   const handleCreateArtikel = (data) => {
     dispatch(createArtikel(data));
+    console.log(data);
     navigate("/admin/artikel");
   };
 
