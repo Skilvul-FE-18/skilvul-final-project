@@ -31,6 +31,10 @@ function App() {
           <Route exact path="/detail/:id" element={<DetailArtikel />} />
           <Route exact path="/formLaporan" element={<FormPelaporan data="send" />} />
           <Route exact path="/profile/:id" element={<EditProfil />} />
+          <Route exact path="/admin" element={<DashboardAdmin />} />
+        <Route exact path="/admin/artikel" element={<DashboardAdmin />} />
+        <Route exact path="/admin/artikel/create" element={<Create />} />
+        <Route exact path="/admin/artikel/update/:id" element={<Update />} />
           {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
         </Routes> 
         : 
@@ -45,12 +49,12 @@ function App() {
           {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
         </Routes>
       }
-      <Routes>
+      {/* <Routes>
         <Route exact path="/admin" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel/create" element={<Create />} />
         <Route exact path="/admin/artikel/update/:id" element={<Update />} />
-      </Routes>
+      </Routes> */}
       
       </BrowserRouter>
     </>
