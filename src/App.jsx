@@ -20,9 +20,9 @@ function App() {
   console.log("test")
   return (
     <>
-      <BrowserRouter>
       {
         store.authStatus ? 
+      <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
@@ -42,7 +42,9 @@ function App() {
         <Route exact path="/admin/artikel/update/:id" element={<Update />} /> */}
           {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
         </Routes> 
+      </BrowserRouter>
         : 
+      <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />

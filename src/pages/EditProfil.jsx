@@ -59,8 +59,16 @@ dispatch(updateUser(id, updatedUser))
                   <div className="col-md-6">
                     <div className="form-group">
                       <label >Username</label>
-                      <input type="text" className="form-control mt-2" id="nama" />
-                    </div>
+                      <input
+                        type="text"
+                        className="form-control mt-2"
+                        id="nama"
+                        value={updatedUser.username}
+                        onChange={(e) =>
+                          setUpdatedUser({ ...updatedUser, username: e.target.value })
+                        }
+                      />
+                      </div>
                     <div className="form-group">
                       <label >Email</label>
                       <input type="text" className="form-control mt-2" id="nama" />
