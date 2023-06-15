@@ -55,6 +55,7 @@ function App() {
           <Route exact path="/formLaporan" element={<FormPelaporan />} />
           {/* <Route exact path="/admin" element={<DashboardAdmin />} /> */}
         </Routes>
+        </BrowserRouter>
       }
       {/* <Routes>
         <Route exact path="/admin" element={<DashboardAdmin />} />
@@ -63,7 +64,7 @@ function App() {
         <Route exact path="/admin/artikel/update/:id" element={<Update />} />
       </Routes> */}
       
-      </BrowserRouter>
+      
     </>
   );
 }
