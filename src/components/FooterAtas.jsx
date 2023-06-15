@@ -1,7 +1,7 @@
 import { BsFacebook, BsInstagram, BsLinkedin, BsTwitter } from "react-icons/bs";
 import footerLogo from "../assets/img/footer-logo.png";
 import footerSkilvul from "../assets/img/footer-skilvul.png";
-import "../assets/css/footerAtas.css";
+import "../assets/css/FooterAtas.css";
 
 function FooterAtas() {
   return (
