@@ -17,6 +17,7 @@ import EditProfil from './pages/EditProfil';
 function App() {
   const store = useSelector((state) => state.users);
   console.log(store)
+  console.log("test")
   return (
     <>
       <BrowserRouter>
