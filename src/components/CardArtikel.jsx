@@ -4,7 +4,7 @@ function CardArtikel({img, kategori, date, tittle, excerpt,onClick}) {
   const truncatedExcerpt = excerpt.length > 50 ? `${excerpt.substring(0, 50)}...` : excerpt;
   return (
     <div className="card cardList mb-3" style={{ width: "18rem",
-    height: "27rem"
+    height: "30rem"
     }}>
     <img src={img} className="card-img-top" alt="..."
     style={{
@@ -16,9 +16,9 @@ function CardArtikel({img, kategori, date, tittle, excerpt,onClick}) {
         <span className="badge bg-primary">{kategori}</span>
         <span className="mx-3">{date}</span>
       </div>
-      <h5 className="card-title mt-3">
+      <h6 className="card-title mt-3">
         {tittle}
-      </h5>
+      </h6>
       <p className="card-text">
         {truncatedExcerpt}
       </p>

@@ -4,6 +4,7 @@ import ikin from "../assets/img/gambar-ikin.png";
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUser, getUserById, updateUser } from "../redux/reducer/userReducer";
+import { Navbar } from "react-bootstrap";
 
 
 function EditProfil() {

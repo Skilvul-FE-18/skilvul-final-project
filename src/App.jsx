@@ -17,14 +17,13 @@ import DashboardNotFound from "./components/DashboardNotFound";
 
 function App() {
   const store = useSelector((state) => state.users);
-  console.log("test")
   return (
     <>
       <BrowserRouter>
       {
         store.authStatus ? 
         <Routes>
-          {/* <Route exact path="*" element={<DashboardNotFound />} /> */}
+          <Route exact path="*" element={<DashboardNotFound />} />
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
@@ -36,7 +35,7 @@ function App() {
         </Routes> 
         : 
         <Routes>
-           {/* <Route exact path="*" element={<DashboardNotFound />} /> */}
+           <Route exact path="*" element={<DashboardNotFound />} />
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
