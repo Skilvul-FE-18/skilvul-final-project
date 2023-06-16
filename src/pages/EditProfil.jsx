@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/editProfile.css";
 import ikin from "../assets/img/gambar-ikin.png";
-import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getUser, getUserById, updateUser } from "../redux/reducer/userReducer";
-import { current } from "@reduxjs/toolkit";
+
 
 function EditProfil() {
   const userData = useSelector((state) => state.users.userData);
@@ -13,7 +12,6 @@ function EditProfil() {
   const { id } = useParams();
 
   const [updatedUser, setUpdatedUser] = useState({
-    id:parseInt(id),
     username: "",
     email: "",
     password: "",
@@ -26,25 +24,11 @@ function EditProfil() {
     age: "",
   });
 
-  const handleUpdateUser = () => {
-    dispatch(updateUser(id, updatedUser));
-  };
-
-  const handleChange = (e) => {
-    setUpdatedUser((prevData) => ({
-      ...prevData,
-      [e.target.name]: e.target.value,
-    }));
-  };
-
-  useEffect(() => {
-    dispatch(getUserById(id));
-    console.log("User Data:", userData);
-  }, [dispatch, id]);
+  
 
   useEffect(() => {
     if (userData.length > 0) { // Periksa apakah userData memiliki data
-      const currentUser = userData.find((item) => item.id === parseInt(id)); // Ubah id menjadi tipe data angka
+      const currentUser = userData.find((item) => item.id === id); // Ubah id menjadi tipe data angka
       if (currentUser) {
         console.log("Current User:", currentUser);
         setUpdatedUser({
@@ -107,7 +91,7 @@ function EditProfil() {
                           id="username"
                           name="username"
                           value={updatedUser.username}
-                          onChange={handleChange}
+                          
                         />
                       </div>
                       <div className="form-group">
@@ -118,7 +102,7 @@ function EditProfil() {
                           id="email"
                           name="email"
                           value={updatedUser.email}
-                          onChange={handleChange}
+                         
                         />
                       </div>
                       <div className="form-group">
@@ -129,7 +113,7 @@ function EditProfil() {
                           id="firstname"
                           name="firstname"
                           value={updatedUser.firstname}
-                          onChange={handleChange}
+                          
                         />
                       </div>
                       <div className="form-group">
@@ -140,7 +124,7 @@ function EditProfil() {
                           id="lastname"
                           name="lastname"
                           value={updatedUser.lastname}
-                          onChange={handleChange}
+                         
                         />
                       </div>
                       <div className="form-group">
@@ -151,7 +135,7 @@ function EditProfil() {
                           id="password"
                           name="password"
                           value={updatedUser.password}
-                          onChange={handleChange}
+                          
                         />
                       </div>
                     </div>
@@ -164,7 +148,7 @@ function EditProfil() {
                           id="fullname"
                           name="fullname"
                           value={updatedUser.fullname}
-                          onChange={handleChange}
+                         
                         />
                       </div>
                       <div className="form-group">
@@ -175,7 +159,7 @@ function EditProfil() {
                           id="address"
                           name="address"
                           value={updatedUser.address}
-                          onChange={handleChange}
+                          
                         />
                       </div>
                       <div className="form-group">
@@ -186,7 +170,7 @@ function EditProfil() {
                           id="borndate"
                           name="borndate"
                           value={updatedUser.borndate}
-                          onChange={handleChange}
+                          
                         />
                       </div>
                       <div className="form-group">
@@ -197,7 +181,7 @@ function EditProfil() {
                           id="gender"
                           name="gender"
                           value={updatedUser.gender}
-                          onChange={handleChange}
+                         
                         />
                       </div>
                       <div className="form-group">
@@ -208,7 +192,7 @@ function EditProfil() {
                           id="age"
                           name="age"
                           value={updatedUser.age}
-                          onChange={handleChange}
+                          
                         />
                       </div>
                     </div>
@@ -218,7 +202,7 @@ function EditProfil() {
                     <div className="col-md-12">
                       <button
                         className="btn btn-primary"
-                        onClick={handleUpdateUser}
+                        
                       >
                         Ubah Profile
                       </button>

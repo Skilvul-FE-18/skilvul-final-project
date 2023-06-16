@@ -44,6 +44,7 @@ function App() {
         </Routes> 
         : 
         <Routes>
+           <Route exact path="/profile/:id" element={<EditProfil />} />
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
@@ -55,7 +56,6 @@ function App() {
         </Routes>
       }
       <Routes>
-        <Route exact path="/admin" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel/create" element={<Create />} />
         <Route exact path="/admin/artikel/update/:id" element={<Update />} />
