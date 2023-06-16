@@ -17,6 +17,7 @@ import DashboardNotFound from "./components/DashboardNotFound";
 
 function App() {
   const store = useSelector((state) => state.users);
+  console.log("test")
   return (
     <>
       <BrowserRouter>
