@@ -1,13 +1,13 @@
 import "../assets/css/DashboardAdmin.css";
 import AdminLayout from "../layout/AdminLayout";
-import Index from "./admin/artikel";
+import ListAdminArtikel from "./admin/artikel/ListAdminArtikel";
 
 function DashboardAdmin() {
 
   return (
     <>
           <AdminLayout>
-          <Index />
+          <ListAdminArtikel />
           </AdminLayout>
      
     </>
