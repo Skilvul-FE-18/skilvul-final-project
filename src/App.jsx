@@ -7,7 +7,7 @@ import Register from "./pages/Register";
 import TentangKami from './pages/TentangKami';
 import Artikel from './pages/Artikel';
 import DetailArtikel from './pages/DetailArtikel';
-import DashboardAdmin from "./pages/DashboardAdmin";
+import DashboardAdmin from "./pages/admin/DashboardAdmin";
 import FormPelaporan from "./pages/FormPelaporan";
 import Create from "./pages/admin/artikel/create";
 import Update from "./pages/admin/artikel/update";
@@ -17,15 +17,13 @@ import DashboardNotFound from "./components/DashboardNotFound";
 
 function App() {
   const store = useSelector((state) => state.users);
-  console.log(store)
-  console.log("test")
   return (
     <>
       <BrowserRouter>
       {
         store.authStatus ? 
         <Routes>
-          <Route exact path="*" element={<DashboardNotFound />} />
+          {/* <Route exact path="*" element={<DashboardNotFound />} /> */}
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
@@ -37,7 +35,7 @@ function App() {
         </Routes> 
         : 
         <Routes>
-           <Route exact path="*" element={<DashboardNotFound />} />
+           {/* <Route exact path="*" element={<DashboardNotFound />} /> */}
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
@@ -45,14 +43,17 @@ function App() {
           <Route exact path="/artikel" element={<Artikel />}  />
           <Route exact path="/detail/:id" element={<DetailArtikel />} />
           <Route exact path="/formLaporan" element={<FormPelaporan />} />
-          <Route exact path="/admin/listAdminArtikel" element={<DashboardAdmin />} />
+          <Route exact path="/admin/*" element={<DashboardAdmin />} />
+          <Route exact path="/admin/artikel/create" element={<Create />} />
+        <Route exact path="/admin/artikel/update/:id" element={<Update />} />
         </Routes>
       }
-      <Routes>
-        <Route exact path="/admin/artikel/listAdminArtikel" element={<DashboardAdmin />} />
+      {/* <Routes>
+
+        <Route exact path="/admin/artikel" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel/create" element={<Create />} />
         <Route exact path="/admin/artikel/update/:id" element={<Update />} />
-      </Routes>
+      </Routes> */}
       
       </BrowserRouter>
     </>

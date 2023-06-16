@@ -11,7 +11,6 @@ const ToolsCookies = new Cookies();
 function Navbar() {
   const authStatus = useSelector((state) => state.users.authStatus);
   const userData = useSelector((state) => state.users.userData);
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,11 +18,11 @@ function Navbar() {
    dispatch(getUser())
   }, [dispatch]);
 
-  const handleEditProfile = () => {
+  const handleEditProfile = (id) => {
     // Mengambil data pengguna berdasarkan ID
-    const id = userData.id;
+   
     navigate(`/profile/${id}`); 
-    dispatch(getUserById(id));
+  
   }
 
   const handleLogout = () => {
@@ -114,11 +113,11 @@ function Navbar() {
                   </a>
                   <ul className="dropdown-menu">
                     <li>
-                    <NavLink className="nav-link" to={`/profile/${userData.id}`}>
-                      <button className="dropdown-item" type="button" onClick={handleEditProfile}>
+                    {/* <NavLink className="nav-link" to={`/profile/${userData.id}`}> */}
+                      <button className="dropdown-item" type="button" onClick={()=> handleEditProfile(userData.id)}>
                         Edit Profile
                       </button>
-                    </NavLink>
+                    {/* </NavLink> */}
                     </li>
                     <li>
                       <button
