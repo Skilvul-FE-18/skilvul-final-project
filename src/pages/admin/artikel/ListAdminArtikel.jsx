@@ -7,7 +7,7 @@ import {
 import ListArtikelAdmin from "../../../components/ListArtikelAdmin";
 import { NavLink, useNavigate } from "react-router-dom";
 
-function Index() {
+function ListAdminArtikel() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { artikel } = useSelector((state) => state.artikel);
@@ -53,4 +53,4 @@ function Index() {
   );
 }
 
-export default Index;
+export default ListAdminArtikel;
