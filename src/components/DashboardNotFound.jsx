@@ -10,7 +10,7 @@ function DashboardNotFound() {
                   <img src={notFound} className="card-img-top" alt="..." />
                   <div className="card-body">
                     <h5 className="card-title ">
-                    Kamu belum menambahkan daftar artikel
+                    Not FOUND
                     </h5>
                     <p className="card-text">
                     Temukan berbagai artikel untuk meningkatkan pengetahuan kamu tentang bullying.
