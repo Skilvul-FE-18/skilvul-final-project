@@ -48,11 +48,11 @@ function App() {
           <Route exact path="/admin" element={<DashboardAdmin />} />
         </Routes>
       }
-  
+      <Routes>
         <Route exact path="/admin/artikel" element={<DashboardAdmin />} />
         <Route exact path="/admin/artikel/create" element={<Create />} />
         <Route exact path="/admin/artikel/update/:id" element={<Update />} />
-      
+      </Routes>
       
       </BrowserRouter>
     </>
